@@ -45,4 +45,10 @@ def item_success(request):
         color = request.POST['color'],
         quantity = request.POST['quantity'],
             )
+
+        location = Warehouse.objects.get(id = request.POST['location'])
+        last_item = Item.objects.last()
+        location.warehouse.add(last_item)
+
         return redirect('/new_item')
+    
