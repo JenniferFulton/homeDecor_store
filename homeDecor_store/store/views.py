@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from .models import *
 
@@ -90,6 +91,15 @@ def delete_item(request,id):
     to_delete = Item.objects.get(id=id)
     to_delete.delete()
     return redirect('/')
+
+def view_item(request,id):
+    #view a specific item
+    current_item = Item.objects.get(id=id)
+    context = {
+        'item': current_item
+    }
+
+    return render(request, 'view_item.html', context)
 
 
     
