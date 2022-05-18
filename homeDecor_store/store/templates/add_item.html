@@ -1,3 +1,37 @@
 <h1>Form for adding Inventory</h1>
 <a href='/new_warehouse'>Add a Warehouse</a>
 <a href='/'>View Inventory</a>
+
+<h2>New Item</h2>
+<form action="/item_success" method="POST">
+    {% csrf_token %}
+    <label for='name'>Item Name:</label>
+    <input type='text' id='name' name='name'>
+
+    <label for='description'>Description:</label>
+    <input type='text' id='description' name='description'>
+
+    <label for='image'>Upload Image:</label>
+    <input type="file" id="image" name="image">
+
+    <label for='height'>Height:</label>
+    <input type='text' id='height' name='height'>
+
+    <label for='width'>Width:</label>
+    <input type='text' id='width' name='width'>
+
+    <label for='color'>Color:</label>
+    <input type='text' id='color' name='color'>
+
+    <label for='quantity'>Quantity:</label>
+    <input type='text' id='quantity' name='quantity'>
+
+    <label for="location">Warehouse:</label>
+    <select id="location" name="location">
+        {% for warehouse in locations %}
+        <option value={{warehouse.id}}>{{warehouse.name}}</option>
+        {% endfor %}
+    </select>
+
+    <input type='submit' value = "Add Item">
+</form>

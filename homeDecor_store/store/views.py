@@ -9,7 +9,11 @@ def home_page(request):
     return render(request, 'home.html', context)
 
 def new_item(request):
-    return render(request, 'add_item.html')
+    all_warehouses = Warehouse.objects.all()
+    context = {
+        'locations' : all_warehouses
+    }
+    return render(request, 'add_item.html', context)
 
 def new_warehouse(request):
     all_warehouses = Warehouse.objects.all()
@@ -29,3 +33,16 @@ def warehouse_success(request):
             )
     return redirect('/new_warehouse')
 
+#edit a location
+
+def item_success(request):
+    if request.method == 'POST':
+        Item.objects.create(
+        name = request.POST['name'],
+        description = request.POST['description'],
+        height = request.POST['height'],
+        width = request.POST['width'],
+        color = request.POST['color'],
+        quantity = request.POST['quantity'],
+            )
+        return redirect('/new_item')

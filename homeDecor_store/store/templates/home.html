@@ -2,3 +2,11 @@
 <a href='/new_item'>Add New Item</a>
 
 <p>List of Items Will Display Below</p>
+
+<h1>Inventory</h1>
+{% for item in inventory %}
+<h3>{{item.name}}</h3>
+<img src={{item.image}} alt="Picture Not Available">
+<p>{{item.description}}</p>
+<a href='/edit_item'>Edit Item</a>
+{% endfor %}
