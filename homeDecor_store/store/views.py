@@ -85,5 +85,11 @@ def edit_success(request,id):
     
     return redirect('/')
 
+def delete_item(request,id):
+    #delete an item in the inventory and send user back to home page
+    to_delete = Item.objects.get(id=id)
+    to_delete.delete()
+    return redirect('/')
+
 
     
