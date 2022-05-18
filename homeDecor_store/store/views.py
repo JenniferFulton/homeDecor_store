@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 
 def home_page(request):
@@ -12,4 +12,20 @@ def new_item(request):
     return render(request, 'add_item.html')
 
 def new_warehouse(request):
-    return render(request, 'add_warehouse.html')
+    all_warehouses = Warehouse.objects.all()
+    context = {
+        'locations' : all_warehouses
+    }
+    return render(request, 'add_warehouse.html', context)
+
+def warehouse_success(request):
+    if request.method == 'POST':
+        Warehouse.objects.create(
+        name = request.POST['name'],
+        address = request.POST['address'],
+        city = request.POST['city'],
+        state = request.POST['state'],
+        zip_code = request.POST['zip_code'],
+            )
+    return redirect('/new_warehouse')
+
