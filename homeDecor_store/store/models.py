@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 
 class Warehouse(models.Model):
     name = models.CharField(max_length=255)
@@ -17,7 +16,7 @@ class Item(models.Model):
     width = models.CharField(max_length=30)
     color = models.CharField(max_length=30)
     quantity = models.CharField(max_length=100)
-    image = forms.FileField()
+    image = models.ImageField(null=True)
     location = models.ManyToManyField(Warehouse,related_name="warehouse")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

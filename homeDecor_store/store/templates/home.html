@@ -12,8 +12,8 @@
 
         <h1>Inventory</h1>
         {% for item in inventory %}
-        <h3>{{item.name}}</h3>
-        <img src={{item.image}} alt="Picture Not Available">
+        <h3>--{{item.name}}</h3>
+        <!-- <img src={{item.image}} alt="Picture Not Available"> -->
         <p>{{item.description}}</p>
         <a href='/view_item/{{item.id}}'>View Item</a> 
         {% endfor %}

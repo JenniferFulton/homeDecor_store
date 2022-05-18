@@ -50,6 +50,7 @@ def item_success(request):
         width = request.POST['width'],
         color = request.POST['color'],
         quantity = request.POST['quantity'],
+        image = request.POST['image']
             )
 
         location = Warehouse.objects.get(id = request.POST['location'])
