@@ -7,6 +7,7 @@
     <title>View {{item.name}}</title>
 </head>
 <body>
+    <a href='/'>Back</a>
     <h2>{{item.name}}</h2>
     <img src={{item.image}} alt='Picture Not Avialable'>
     <h4>Description</h4>
@@ -22,6 +23,6 @@
     <h4>Warehouse</h4>
     <!-- <p>{{item.location}}</p> -->
 
-    <a href='/'>Back</a>
+    <a href='/edit_item/{{item.id}}'>Edit</a> | <a href='/delete_item/{{item.id}}'>Delete</a>
 </body>
 </html>
