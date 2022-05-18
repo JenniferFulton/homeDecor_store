@@ -51,4 +51,17 @@ def item_success(request):
         location.warehouse.add(last_item)
 
         return redirect('/new_item')
+
+def edit_item(request,id):
+    current_item = Item.objects.get(id=id)
+    all_warehouses = Warehouse.objects.all()
+    context = {
+        'locations' : all_warehouses,
+        'item' : current_item,
+    }
+    return render(request, 'edit_item.html', context)
+
+# def edit_success(request):
+
+
     

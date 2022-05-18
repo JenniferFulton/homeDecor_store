@@ -28,6 +28,7 @@
 
     <label for="location">Warehouse:</label>
     <select id="location" name="location">
+        <option value=""></option>
         {% for warehouse in locations %}
         <option value={{warehouse.id}}>{{warehouse.name}}</option>
         {% endfor %}
