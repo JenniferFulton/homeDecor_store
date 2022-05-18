@@ -1,38 +1,49 @@
-<h1>Form for adding Inventory</h1>
-<a href='/new_warehouse'>Add a Warehouse</a>
-<a href='/'>View Inventory</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item to Inventory</title>
+</head>
+    <body>
+        <h1>Form for adding Inventory</h1>
+        <a href='/new_warehouse'>Add a Warehouse</a>
+        <a href='/'>View Inventory</a>
 
-<h2>New Item</h2>
-<form action="/item_success" method="POST">
-    {% csrf_token %}
-    <label for='name'>Item Name:</label>
-    <input type='text' id='name' name='name'>
+        <h2>New Item</h2>
+        <form action="/item_success" method="POST">
+            {% csrf_token %}
+            <label for='name'>Item Name:</label>
+            <input type='text' id='name' name='name'>
 
-    <label for='description'>Description:</label>
-    <input type='text' id='description' name='description'>
+            <label for='description'>Description:</label>
+            <input type='text' id='description' name='description'>
 
-    <label for='image'>Upload Image:</label>
-    <input type="file" id="image" name="image">
+            <label for='image'>Upload Image:</label>
+            <input type="file" id="image" name="image">
 
-    <label for='height'>Height:</label>
-    <input type='text' id='height' name='height'>
+            <label for='height'>Height:</label>
+            <input type='text' id='height' name='height'>
 
-    <label for='width'>Width:</label>
-    <input type='text' id='width' name='width'>
+            <label for='width'>Width:</label>
+            <input type='text' id='width' name='width'>
 
-    <label for='color'>Color:</label>
-    <input type='text' id='color' name='color'>
+            <label for='color'>Color:</label>
+            <input type='text' id='color' name='color'>
 
-    <label for='quantity'>Quantity:</label>
-    <input type='text' id='quantity' name='quantity'>
+            <label for='quantity'>Quantity:</label>
+            <input type='text' id='quantity' name='quantity'>
 
-    <label for="location">Warehouse:</label>
-    <select id="location" name="location">
-        <option value=""></option>
-        {% for warehouse in locations %}
-        <option value={{warehouse.id}}>{{warehouse.name}}</option>
-        {% endfor %}
-    </select>
+            <label for="location">Warehouse:</label>
+            <select id="location" name="location">
+                <option value=""></option>
+                {% for warehouse in locations %}
+                <option value={{warehouse.id}}>{{warehouse.name}}</option>
+                {% endfor %}
+            </select>
 
-    <input type='submit' value = "Add Item">
-</form>
+            <input type='submit' value = "Add Item">
+        </form>
+    </body>
+</html>

@@ -1,12 +1,23 @@
-<h1>All Inventory</h1>
-<a href='/new_item'>Add New Item</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Inventory</title>
+</head>
+    <body>
+        <h1>All Inventory</h1>
+        <a href='/new_item'>Add New Item</a>
 
-<p>List of Items Will Display Below</p>
+        <p>List of Items Will Display Below</p>
 
-<h1>Inventory</h1>
-{% for item in inventory %}
-<h3>{{item.name}}</h3>
-<img src={{item.image}} alt="Picture Not Available">
-<p>{{item.description}}</p>
-<a href='/edit_item/{{item.id}}'>Edit Item</a>
-{% endfor %}
+        <h1>Inventory</h1>
+        {% for item in inventory %}
+        <h3>{{item.name}}</h3>
+        <img src={{item.image}} alt="Picture Not Available">
+        <p>{{item.description}}</p>
+        <a href='/edit_item/{{item.id}}'>Edit Item</a>
+        {% endfor %}
+    </body>
+</html>

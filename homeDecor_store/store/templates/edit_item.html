@@ -1,33 +1,44 @@
-<h2>Edit {{item.name}}</h2>
-<form action="/item_success" method="POST">
-    {% csrf_token %}
-    <label for='new_name'>Item Name:</label>
-    <input type='text' id='new_name' name='new_name' placeholder={{item.name}}>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Inventory Item</title>
+</head>
+    <body>
+        <h2>Edit {{item.name}}</h2>
+        <form action="/edit_success/{{item.id}}" method="POST">
+            {% csrf_token %}
+            <label for='new_name'>Item Name:</label>
+            <input type='text' id='new_name' name='new_name' placeholder={{item.name}}>
 
-    <label for='new_description'>Description:</label>
-    <input type='text' id='new_description' name='new_description' placeholder={{item.description}}>
+            <label for='new_description'>Description:</label>
+            <input type='text' id='new_description' name='new_description' placeholder={{item.description}}>
 
-    <label for='new_image'>Upload Image:</label>
-    <input type="file" id="new_image" name="new_image">
+            <label for='new_image'>Upload Image:</label>
+            <input type="file" id="new_image" name="new_image">
 
-    <label for='new_height'>Height:</label>
-    <input type='text' id='new_height' name='new_height' placeholder={{item.height}}>
+            <label for='new_height'>Height:</label>
+            <input type='text' id='new_height' name='new_height' placeholder={{item.height}}>
 
-    <label for='new_width'>Width:</label>
-    <input type='text' id='new_width' name='new_width' placeholder={{item.width}}>
+            <label for='new_width'>Width:</label>
+            <input type='text' id='new_width' name='new_width' placeholder={{item.width}}>
 
-    <label for='new_color'>Color:</label>
-    <input type='text' id='new_color' name='new_color' placeholder={{item.color}}>
+            <label for='new_color'>Color:</label>
+            <input type='text' id='new_color' name='new_color' placeholder={{item.color}}>
 
-    <label for='new_quantity'>Quantity:</label>
-    <input type='text' id='new_quantity' name='new_quantity' placeholder={{item.quantity}}>
+            <label for='new_quantity'>Quantity:</label>
+            <input type='text' id='new_quantity' name='new_quantity' placeholder={{item.quantity}}>
 
-    <label for="new_location">Warehouse:</label>
-    <select id="new_location" name="new_location" placeholder={{item.location}}>
-        {% for warehouse in locations %}
-        <option value={{warehouse.id}}>{{warehouse.name}}</option>
-        {% endfor %}
-    </select>
+            <label for="new_location">Warehouse:</label>
+            <select id="new_location" name="new_location" placeholder={{item.location}}>
+                {% for warehouse in locations %}
+                <option value={{warehouse.id}}>{{warehouse.name}}</option>
+                {% endfor %}
+            </select>
 
-    <input type='submit' value = "Add Item">
-</form>
+            <input type='submit' value = "Update Item">
+        </form>
+    </body>
+</html>
