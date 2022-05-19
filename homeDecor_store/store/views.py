@@ -1,6 +1,7 @@
 import re
 from django.shortcuts import render, redirect
 from .models import *
+from django.contrib import messages
 
 def home_page(request):
     #home page displays inventory with option to add new item to inventory
@@ -31,33 +32,45 @@ def new_warehouse(request):
 def warehouse_success(request):
     #adds a new warehouse and goes back to warehouse page
     if request.method == 'POST':
-        Warehouse.objects.create(
-        name = request.POST['name'],
-        address = request.POST['address'],
-        city = request.POST['city'],
-        state = request.POST['state'],
-        zip_code = request.POST['zip_code'],
-            )
-    return redirect('/new_warehouse')
+        errors = Warehouse.objects.newWarehouse_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/new_warehouse')
+        else:
+            Warehouse.objects.create(
+            name = request.POST['name'],
+            address = request.POST['address'],
+            city = request.POST['city'],
+            state = request.POST['state'],
+            zip_code = request.POST['zip_code'],
+                )
+            return redirect('/new_warehouse')
 
 def item_success(request):
     #adds a new item to inventory
     if request.method == 'POST':
-        Item.objects.create(
-        name = request.POST['name'],
-        description = request.POST['description'],
-        height = request.POST['height'],
-        width = request.POST['width'],
-        color = request.POST['color'],
-        quantity = request.POST['quantity'],
-        image = request.POST['image']
-            )
+        errors = Item.objects.newItem_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/new_item')
+        else:
+            Item.objects.create(
+            name = request.POST['name'],
+            description = request.POST['description'],
+            height = request.POST['height'],
+            width = request.POST['width'],
+            color = request.POST['color'],
+            quantity = request.POST['quantity'],
+            image = request.POST['image']
+                )
 
-        location = Warehouse.objects.get(id = request.POST['location'])
-        last_item = Item.objects.last()
-        location.warehouse.add(last_item)
+            location = Warehouse.objects.get(id = request.POST['location'])
+            last_item = Item.objects.last()
+            location.warehouse.add(last_item)
 
-        return redirect('/new_item')
+            return redirect('/')
 
 def edit_item(request,id):
     #brings user to a page with a form to edit a specific item
@@ -71,21 +84,27 @@ def edit_item(request,id):
 
 def edit_success(request,id):
     #updates item information
-    to_edit = Item.objects.get(id=id)
     if request.method == 'POST':
-        to_edit.name = request.POST['new_name'],
-        to_edit.description = request.POST['new_description'],
-        to_edit.height = request.POST['new_height'],
-        to_edit.width = request.POST['new_width'],
-        to_edit.color = request.POST['new_color'],
-        to_edit.quantity = request.POST['new_quantity'],
+        # errors = Item.objects.newItem_validator(request.POST)
+        # if len(errors) > 0:
+        #     for key, value in errors.items():
+        #         messages.error(request, value)
+        #     return redirect('/view_item/' + str(id))
+        # else:
+        to_edit = Item.objects.get(id=id)
+        to_edit.name = request.POST['new_name']
+        to_edit.description = request.POST['new_description']
+        to_edit.height = request.POST['new_height']
+        to_edit.width = request.POST['new_width']
+        to_edit.color = request.POST['new_color']
+        to_edit.quantity = request.POST['new_quantity']
         
         location = Warehouse.objects.get(id = request.POST['new_location'])
         location.warehouse.add(to_edit)
 
         to_edit.save()
-    
-    return redirect('/')
+
+        return redirect('/')
 
 def delete_item(request,id):
     #delete an item in the inventory and send user back to home page

@@ -10,6 +10,14 @@
         <h2>Add a Warehouse</h2>
         <a href='/new_item'>Back</a>
 
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li {% if messages.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+            {% endfor %}    
+        </ul>
+        {% endif %}
+
         <form action="/warehouse_success" method="POST">
             {% csrf_token %}
             <label for='name'>Warehouse Nickname:</label>

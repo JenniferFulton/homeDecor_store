@@ -11,6 +11,14 @@
         <a href='/new_warehouse'>Add a Warehouse</a>
         <a href='/'>View Inventory</a>
 
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li {% if messages.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+            {% endfor %}    
+        </ul>
+        {% endif %}
+
         <h2>New Item</h2>
         <form action="/item_success" method="POST">
             {% csrf_token %}
