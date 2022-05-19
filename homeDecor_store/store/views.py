@@ -85,12 +85,6 @@ def edit_item(request,id):
 def edit_success(request,id):
     #updates item information
     if request.method == 'POST':
-        # errors = Item.objects.newItem_validator(request.POST)
-        # if len(errors) > 0:
-        #     for key, value in errors.items():
-        #         messages.error(request, value)
-        #     return redirect('/view_item/' + str(id))
-        # else:
         to_edit = Item.objects.get(id=id)
         to_edit.name = request.POST['new_name']
         to_edit.description = request.POST['new_description']

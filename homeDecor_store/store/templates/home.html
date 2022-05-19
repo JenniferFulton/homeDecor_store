@@ -8,8 +8,11 @@
 </head>
     <body>
         <h1>All Inventory</h1>
+
+        <!-- link to adding a new item to the inventory -->
         <a href='/new_item'>Add New Item</a>
 
+        <!-- list of inventory -->
         <h1>Inventory</h1>
         {% for item in inventory %}
         <h3>--{{item.name}}</h3>

@@ -6,23 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View {{item.name}}</title>
 </head>
-<body>
-    <a href='/'>Back</a>
-    <h2>{{item.name}}</h2>
-    <!-- <img src={{item.image}} alt='Picture Not Avialable'> -->
-    <h4>Description</h4>
-    <p>{{item.description}}</p>
-    <h4>Height</h4>
-    <p>{{item.height}}</p>
-    <h4>Width</h4>
-    <p>{{item.width}}</p>
-    <h4>Color</h4>
-    <p>{{item.color}}</p>
-    <h4>Quantity</h4>
-    <p>{{item.quantity}}</p>
-    <h4>Warehouse</h4>
-    <!-- <p>{{item.location}}</p> -->
+    <body>
+        <!-- link back to inventory list -->
+        <a href='/'>Back</a>
+        <h2>{{item.name}}</h2>
+        
+        <!-- <img src={{item.image}} alt='Picture Not Avialable'> -->
+        
+        <h4>Description</h4>
+        <p>{{item.description}}</p>
+        
+        <h4>Height</h4>
+        <p>{{item.height}}</p>
+        
+        <h4>Width</h4>
+        <p>{{item.width}}</p>
+        
+        <h4>Color</h4>
+        <p>{{item.color}}</p>
+        
+        <h4>Quantity</h4>
+        <p>{{item.quantity}}</p>
+        
+        <h4>Warehouse</h4>
+        <!-- <p>{{item.location}}</p> -->
 
-    <a href='/edit_item/{{item.id}}'>Edit</a> | <a href='/delete_item/{{item.id}}'>Delete</a>
-</body>
+        <!-- links for editing the item and deleting it -->
+        <a href='/edit_item/{{item.id}}'>Edit</a> | <a href='/delete_item/{{item.id}}'>Delete</a>
+    </body>
 </html>

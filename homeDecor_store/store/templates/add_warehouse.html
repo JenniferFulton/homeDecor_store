@@ -7,9 +7,11 @@
     <title>Add a Warehouse</title>
 </head>
     <body>
-        <h2>Add a Warehouse</h2>
+
+        <!-- link back to item entry page -->
         <a href='/new_item'>Back</a>
 
+        <!-- if data entry does not meet validations error messages will show here -->
         {% if messages %}
         <ul>
             {% for message in messages %}
@@ -18,6 +20,8 @@
         </ul>
         {% endif %}
 
+        <!-- form to add new Item to inventory -->
+        <h2>Add a Warehouse</h2>
         <form action="/warehouse_success" method="POST">
             {% csrf_token %}
             <label for='name'>Warehouse Nickname:</label>

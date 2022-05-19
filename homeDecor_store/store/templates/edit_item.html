@@ -7,8 +7,10 @@
     <title>Edit Inventory Item</title>
 </head>
     <body>
-        <a href='/'>Inventory List</a>
+        <!-- link back to inventory list -->
+        <a href='/'>View Inventory</a>
 
+        <!-- if data entry does not meet validations error messages will show here -->
         {% if messages %}
         <ul>
             {% for message in messages %}
@@ -17,6 +19,7 @@
         </ul>
         {% endif %}
         
+        <!-- form to edit a specific item within the inventory -->
         <h2>Edit {{item.name}}</h2>
         <form action="/edit_success/{{item.id}}" method="POST">
             {% csrf_token %}

@@ -7,10 +7,13 @@
     <title>Add Item to Inventory</title>
 </head>
     <body>
-        <h1>Form for adding Inventory</h1>
+        <!-- link to add a warehouse location -->
         <a href='/new_warehouse'>Add a Warehouse</a>
+
+        <!-- link back to inventory list/home page -->
         <a href='/'>View Inventory</a>
 
+        <!-- if data entry does not meet validations error messages will show here -->
         {% if messages %}
         <ul>
             {% for message in messages %}
@@ -19,6 +22,7 @@
         </ul>
         {% endif %}
 
+        <!-- form to add new Item to inventory -->
         <h2>New Item</h2>
         <form action="/item_success" method="POST">
             {% csrf_token %}
