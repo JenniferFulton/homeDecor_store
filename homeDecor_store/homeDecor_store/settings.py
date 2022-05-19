@@ -25,7 +25,7 @@ SECRET_KEY = '3xd71i!f6wmewl2o7kb51-1rpg$3dcgo!hqra%-it3bq+jgy3l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['24abe911-1c2b-4a69-8ee9-83f013ee95f4.id.repl.co','homedecorstore-4.jmf145.repl.co']
+ALLOWED_HOSTS = ['24abe911-1c2b-4a69-8ee9-83f013ee95f4.id.repl.co','homedecorstore-4.jmf145.repl.co','localhost']
 
 
 # Application definition
